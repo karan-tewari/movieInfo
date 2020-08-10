@@ -1,4 +1,9 @@
 import React from 'react';
 
-    
-     export default   ({match : {params : {id}}}) => <h2>{id}</h2>
+const MovieInfo = () => {
+    return(
+        <h1>Movie Info</h1>
+    )
+}
+
+export default MovieInfo;
