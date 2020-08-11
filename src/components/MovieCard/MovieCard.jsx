@@ -1,29 +1,16 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-
+import React from "react";
 
 export default function MovieCard(props) {
-
   return (
-    <Card>
-    <CardContent>
-      <Typography color="textSecondary" gutterBottom>
-        {props.movieName}
-      </Typography>
-      <Typography variant="h5" component="h2">
-      
-      </Typography>
-      <Typography color="textSecondary">
-        {props.year}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions>
-  </Card>
+    <div className="card">
+      <img className="card-img-top" src="https://m.media-amazon.com/images/M/MV5BOGUyZDUxZjEtMmIzMC00MzlmLTg4MGItZWJmMzBhZjE0Mjc1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg" alt="Card image cap" />
+      <div className="card-body">
+        <h5 className="card-title">{props.movieName}</h5>
+        <p className="card-text">{props.year}</p>
+        <a href="#" className="btn btn-primary">
+          Go somewhere
+        </a>
+      </div>
+    </div>
   );
 }

@@ -1,0 +1,29 @@
+.movieContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    width: 100%;
+    flex-direction: column;
+}
+
+.movieImage img {
+    float: left;
+    width: 500px;
+    border: 1px solid #000;
+    padding: 15px;
+}
+.movieOtherInfo {
+    float: left;
+    width: 100%;
+}
+
+.leftMovie {
+    float: left;
+    width: 50%;
+}
+
+.rightMovie {
+    width: 50%;
+    float: right;
+}
