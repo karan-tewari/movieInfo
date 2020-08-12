@@ -1,28 +1,47 @@
-import React from "react";
+import React, { Component } from "react";
 
-import {useHistory} from 'react-router-dom';
-import data from "../../data.json";
+import {withRouter} from 'react-router-dom';
+// import data from "../../data.json";
 import MovieCard from '../MovieCard/MovieCard';
+import Axios from "axios";
 
-const Movies = (props) => {
-    
-  const cardHandler = (id) => {
-    console.log(id);
-  };
-  const history = useHistory()
-  const myCards = data.map((x) => {
-    return (
-      <a onClick={()=> history.push(`/movies/${x.id}`)}>
-        <MovieCard movieName={x.Title} year={x.Year} key={x.id}/>
-      </a>
-    );
-  });
+class Movies extends Component{
 
-  return (
-    <div className="container">
-      <div className="row">{myCards}</div>      
-    </div>
-  );
+  state = {
+    movieData : null,
+    dataLoaded : false
+  }
+
+
+  componentDidMount(){
+    Axios.get("https://www.omdbapi.com/?s=batman&apikey=dc0b287b")
+    .then(response => {
+      console.log(response);
+      this.setState({
+        dataLoaded : true,
+        movieData : response.data.Search
+      })
+    })
+  }
+
+    render(){
+      let myCards = null;
+      const {history} = this.props;
+      if(this.state.dataLoaded){
+        myCards = this.state.movieData.map((x) => {
+          return (
+            <a onClick={()=> history.push(`/movies/${x.imdbID}`)}>
+              <MovieCard movieName={x.Title} year={x.Year} key={x.imdbID} movieImage={x.Poster}/>
+            </a>
+          );
+        })
+      }
+      return (
+        <div className="container">
+          <div className="row">{myCards}</div>      
+        </div>
+      );
+    }
 };
 
-export default Movies;
+export default withRouter(Movies);
