@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import styles from './movieinfo.module.css';
 import Axios from 'axios';
 
+
 class MovieInfo extends Component{
 
     state = {
